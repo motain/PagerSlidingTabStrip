@@ -1,4 +1,5 @@
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
 
 dependencies {
     compile 'com.android.support:support-v4:19.0.0'
@@ -22,4 +23,19 @@ android {
     }
 }
 
-apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: project.deploymentUrl) {
+               authentication(userName: project.deploymentUsername, password: project.deploymentPassword)
+            }
+
+        	pom.project {
+            	groupId 'com.onefootball.android'
+            	artifactId 'pagerslidingtabstrip'
+            	version '1.0.1'
+        	}
+        }
+    }
+}

@@ -34,3 +34,7 @@ build
 
 #Personal Files
 signing.properties
+
+# sensitive files not to be committed at any point
+onefootball.signing.keystore
+onefootball.properties.gradle
